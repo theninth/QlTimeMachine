@@ -16,12 +16,13 @@ MD_Parola Display = MD_Parola(HARDWARE_TYPE, CS_PIN, MAX_DEVICES);
 TimeMachine timeMachine(&Display);
 
 void setup() {
-    timeMachine.setup();
+    Serial.begin(9600);
+
+    Display.begin();
+    timeMachine.run(1222);
 }
 
 void loop() {
-    timeMachine.count_down(10);
-    timeMachine.to_year(1222);
-    Display.displayClear();
-    delay(10000);
+    timeMachine.tick();
+    delay(200);
 }

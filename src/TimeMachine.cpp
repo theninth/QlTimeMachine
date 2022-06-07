@@ -3,41 +3,31 @@
 
 TimeMachine::TimeMachine(MD_Parola *display) {
     this->display = display;
+    this->display->setIntensity(BRIGHTNESS);
+    this->display->displayClear();
+    this->state = OFF;
+    displayCountdown.set_display(display);
 }
 
-void TimeMachine::setup() {
-    display->begin();
-    display->setIntensity(BRIGHTNESS);
-    display->displayClear();
+void TimeMachine::run(int year) {
+    this->state = COUNT_DOWN;
+    this->year = year;
+    displayCountdown.run(10);
 }
 
-void TimeMachine::fade(int no_of_loops, int speed_ms) {
-  for (int i = 1; i <= no_of_loops; i++) {
-    for (int i = 15; i >= 0; i--) {
-      delay(speed_ms);
-      display->setIntensity(i);
+void TimeMachine::stop() {
+    this->state = OFF;
+}
+
+void TimeMachine::tick() {
+    if (this->state == OFF) {
+        return;
     }
-    
-    for (int i = 0; i <= 15; i++) {
-      delay(speed_ms);
-      display->setIntensity(i);
+    else if (this->state == COUNT_DOWN) {
+        bool is_done = displayCountdown.tick();
+        if (is_done) this->state = YEAR_FLASHING;
     }
-    display->setIntensity(BRIGHTNESS);
-  }
-}
+    else if (this->state == YEAR_FLASHING) {
 
-void TimeMachine::count_down(int from) {
-  display->setTextAlignment(PA_RIGHT);
-  for (int i = from; i >= 0; i--) {
-    display->printf("%2d s", i);
-    delay(1000);
-  }
-}
-
-void TimeMachine::to_year(int year) {
-    display->setTextAlignment(PA_CENTER);
-    display->print("YEAR");
-    fade(5, 50);
-    display->printf("%d", year);
-    fade(10, 50);
+    }
 }

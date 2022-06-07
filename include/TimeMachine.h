@@ -4,21 +4,31 @@
 #include <MD_Parola.h>
 #include <MD_MAX72xx.h>
 #include <SPI.h>
+#include "DisplayCountdown.h"
 
 #define BRIGHTNESS 15
+
+enum TimeMachineState {
+    OFF,
+    COUNT_DOWN,
+    YEAR_FLASHING
+};
+
 
 class TimeMachine {
 
     private:
-    MD_Parola   *display;
+        MD_Parola   *display;
+        TimeMachineState state;
+        DisplayCountdown displayCountdown;
+        int year;
 
     public:
-    TimeMachine(MD_Parola *display);
+        TimeMachine(MD_Parola *display);
 
-    void fade(int no_of_loops, int speed_ms);
-    void count_down(int from);
-    void to_year(int year);
-    void setup();
+        void run(int year);
+        void stop();
+        void tick();
 };
 
 #endif //QLTIMEMACHINE_TIMEMACHINE_H
