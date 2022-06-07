@@ -5,12 +5,15 @@
 #include <MD_MAX72xx.h>
 #include <SPI.h>
 
+/**
+ * Runs a count down on the display.
+ */
 class DisplayCountdown {
 
     private:
-        MD_Parola       *display;
-        unsigned long   last_decrement;
-        int             current_no;
+        MD_Parola       *display;  /** Pointer to display object. */
+        unsigned long   last_decrement;  /** When last decrement was done. */
+        int             current_no;  /** Current number to display */
 
     public:
         void set_display(MD_Parola *display);

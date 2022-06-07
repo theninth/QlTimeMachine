@@ -8,20 +8,28 @@
 
 #define BRIGHTNESS 15
 
+/**
+ * Current state of time machine.
+ */
 enum TimeMachineState {
-    OFF,
-    COUNT_DOWN,
-    YEAR_FLASHING
+    OFF,                 /** Time machine is off.                */
+    COUNT_DOWN,          /** Time machine is running count down. */
+    YEAR_TEXT_FLASHING,  /** Time machine is flashing the text.  */
+    YEAR_NO_FLASHING     /** Time machine is flashing the year   */
 };
 
 
+/**
+ * Does some cool stuff with text on a display
+ * to simulate a time travel machine.
+ */
 class TimeMachine {
 
     private:
-        MD_Parola   *display;
-        TimeMachineState state;
-        DisplayCountdown displayCountdown;
-        int year;
+        MD_Parola   *display;  /** Pointer to display object. */
+        TimeMachineState state;  /** Current state of machine */
+        DisplayCountdown displayCountdown;  /** DisplayCountdown module */
+        int year;  /** Year to travel to. */
 
     public:
         TimeMachine(MD_Parola *display);
