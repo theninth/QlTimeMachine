@@ -24,5 +24,4 @@ void setup() {
 
 void loop() {
     timeMachine.tick();
-    delay(200);
 }

@@ -7,6 +7,7 @@ TimeMachine::TimeMachine(MD_Parola *display) {
     this->display->displayClear();
     this->state = OFF;
     displayCountdown.set_display(display);
+    displayPulsatingText.set_display(display);
 }
 
 /**
@@ -24,6 +25,7 @@ void TimeMachine::run(int year) {
  */
 void TimeMachine::stop() {
     this->state = OFF;
+    this->display->displayClear();
 }
 
 /**
@@ -35,12 +37,23 @@ void TimeMachine::tick() {
     }
     else if (this->state == COUNT_DOWN) {
         bool is_done = displayCountdown.tick();
-        if (is_done) this->state = YEAR_TEXT_FLASHING;
+        if (is_done) {
+            this->state = YEAR_TEXT_FLASHING;
+            this->displayPulsatingText.run("YEAR");
+        }
     }
     else if (this->state == YEAR_TEXT_FLASHING) {
-
+            bool is_done = displayPulsatingText.tick();
+            if (is_done) {
+                this->state = YEAR_NO_FLASHING;
+                this->displayPulsatingText.run("2022");
+            }
     }
     else if (this->state == YEAR_NO_FLASHING) {
-
+            bool is_done = displayPulsatingText.tick();
+            if (is_done) {
+                this->state = OFF;
+                this->display->displayClear();
+            }
     }
 }

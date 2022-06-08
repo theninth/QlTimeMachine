@@ -5,6 +5,7 @@
 #include <MD_MAX72xx.h>
 #include <SPI.h>
 #include "DisplayCountdown.h"
+#include "DisplayPulsatingText.h"
 
 #define BRIGHTNESS 15
 
@@ -29,6 +30,7 @@ class TimeMachine {
         MD_Parola   *display;  /** Pointer to display object. */
         TimeMachineState state;  /** Current state of machine */
         DisplayCountdown displayCountdown;  /** DisplayCountdown module */
+        DisplayPulsatingText displayPulsatingText; /** DisplayPulsationText module */
         int year;  /** Year to travel to. */
 
     public:
