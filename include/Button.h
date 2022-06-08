@@ -3,6 +3,9 @@
 
 #include <cstdint>
 
+/* Time (ms) since last event to not recongnise a new event */
+#define QLTIMEMACHINE_BUTTON_DEBOUNCING 500
+
 /**
  * Simple code to check when a button i released.
  * 
@@ -16,6 +19,7 @@ class Button
         bool isReleased();
 
     private:
+        unsigned long _last_event;
         bool _state;
         uint8_t _pin;
 };

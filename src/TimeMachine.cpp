@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "TimeMachine.h"
 
 
@@ -36,6 +37,8 @@ bool TimeMachine::is_running() {
  * Move the state of the machine forward (if it should by this tick).
  */
 void TimeMachine::tick() {
+    char yearText[10];
+
     if (this->state == OFF) {
         return;
     }
@@ -49,8 +52,9 @@ void TimeMachine::tick() {
     else if (this->state == YEAR_TEXT_FLASHING) {
             bool is_done = displayPulsatingText.tick();
             if (is_done) {
+                snprintf(yearText, 10, "%d", this->year);
                 this->state = YEAR_NO_FLASHING;
-                this->displayPulsatingText.run("2022");
+                this->displayPulsatingText.run(yearText);
             }
     }
     else if (this->state == YEAR_NO_FLASHING) {
