@@ -14,6 +14,8 @@ void DisplayCountdown::set_display(MD_Parola *display) {
 void DisplayCountdown::run(int start_no) {
     last_decrement = millis();
     current_no = start_no;
+    display->setTextAlignment(PA_RIGHT);
+    display->printf("%2d s", start_no);
 }
 
 /**
@@ -24,10 +26,9 @@ void DisplayCountdown::run(int start_no) {
         last_decrement = millis();
         current_no--;
 
-        display->setTextAlignment(PA_RIGHT);
         display->printf("%2d s", current_no);
 
-        return (current_no == 0); // If 0, returns true
+        return (current_no == 0); // If count down finished, return true
     }
     return false;
 }
