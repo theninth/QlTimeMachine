@@ -28,6 +28,10 @@ void TimeMachine::stop() {
     this->display->displayClear();
 }
 
+bool TimeMachine::is_running() {
+    return this->state != OFF;
+}
+
 /**
  * Move the state of the machine forward (if it should by this tick).
  */

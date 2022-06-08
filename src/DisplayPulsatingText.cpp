@@ -32,10 +32,17 @@ void DisplayPulsatingText::run(std::string text) {
     this->display->printf(text.c_str());
 }
 
+/**
+ * Set module in a stopped mode (the tick()-method does nothing.)
+ */
 void DisplayPulsatingText::stop() {
     reset();
 }
 
+/**
+ * Steps the brightness one step up or down (depending on state).
+ * @return True if iteration is done.
+ */
 bool DisplayPulsatingText::step() {
     if (current_brightness > 0 && state == PULSATING_FADING_DOWN) {
         this->display->setIntensity(--current_brightness);

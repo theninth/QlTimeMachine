@@ -39,6 +39,7 @@ class TimeMachine {
         void run(int year);
         void stop();
         void tick();
+        bool is_running();
 };
 
 #endif //QLTIMEMACHINE_TIMEMACHINE_H
