@@ -18,7 +18,7 @@ MD_Parola Display = MD_Parola(HARDWARE_TYPE, CS_PIN, MAX_DEVICES);
 TimeMachine timeMachine(&Display);
 
 Button runButton(5);        // GPIO5 = D1 (on D1 Mini).
-ToggleSwitch timeToggle(4); // GPIO4 = D2 (on D1 Mini).
+ToggleSwitch timeToggle(0); // GPIO0 = D3 (on D1 Mini).
 
 
 void setup() {

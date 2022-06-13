@@ -17,7 +17,7 @@ Microcontroller D7  -> LED-matrix DIN
 Microcontroller D8  -> LED-matrix CS
 
 Microcontroller D1  -> Pushbutton (other pin to GND)
-Microcontroller D2  -> Switch (other pin to GND)
+Microcontroller D3  -> Switch (other pin to GND)
 
 
 ## Installation
