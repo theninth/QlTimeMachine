@@ -22,7 +22,7 @@ void DisplayPulsatingText::set_display(MD_Parola *display) {
 }
 
 /**
- * Set module in run mode (to actually run, the tick()-method
+ * Set module in run mode (to actually run, the update()-method
  * has to be called every n milliseconds.)
  */
 void DisplayPulsatingText::run(std::string text) {
@@ -33,7 +33,7 @@ void DisplayPulsatingText::run(std::string text) {
 }
 
 /**
- * Set module in a stopped mode (the tick()-method does nothing.)
+ * Set module in a stopped mode (the update()-method does nothing.)
  */
 void DisplayPulsatingText::stop() {
     reset();
@@ -63,10 +63,10 @@ bool DisplayPulsatingText::step() {
 }
 
 /**
- * Move the state of the module forward (if it should by this tick).
+ * Move the state of the module forward (if it should by this update).
  * @return true if module is done, otherwise false.
  */
- bool DisplayPulsatingText::tick() {
+ bool DisplayPulsatingText::update() {
     if (state == PULSATING_FADING_OFF) return false;
 
     if ((millis() - last_update) >= UPDATE_PULSE_INTERVAL) {

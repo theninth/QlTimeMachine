@@ -18,7 +18,7 @@ class DisplayCountdown {
     public:
         void set_display(MD_Parola *display);
         void run(int start_no);
-        bool tick();
+        bool update();
 };
 
 #endif  //QLTIMEMACHINE_DISPLAYCOUNTDOWN_H

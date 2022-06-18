@@ -29,7 +29,7 @@ void setup() {
 }
 
 void loop() {
-    timeMachine.tick();
+    timeMachine.update();
     if (runButton.isReleased()) {
         if (!timeMachine.is_running()) {
             Serial.printf("Läge: %d", timeToggle.is_enabled());

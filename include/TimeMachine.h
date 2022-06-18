@@ -38,7 +38,7 @@ class TimeMachine {
 
         void run(int year);
         void stop();
-        void tick();
+        void update();
         bool is_running();
 };
 

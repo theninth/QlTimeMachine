@@ -44,7 +44,7 @@ class DisplayPulsatingText
         void set_display(MD_Parola *display);
         void run(std::string text);
         void stop();
-        bool tick();
+        bool update();
 };
 
 #endif

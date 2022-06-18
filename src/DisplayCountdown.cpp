@@ -8,7 +8,7 @@ void DisplayCountdown::set_display(MD_Parola *display) {
 }
 
 /**
- * Set module in run mode (to actually run, the tick()-method
+ * Set module in run mode (to actually run, the update()-method
  * has to be called every n milliseconds.)
  */
 void DisplayCountdown::run(int start_no) {
@@ -19,9 +19,9 @@ void DisplayCountdown::run(int start_no) {
 }
 
 /**
- * Move the state of the module forward (if it should by this tick).
+ * Move the state of the module forward (if it should by this update).
  */
- bool DisplayCountdown::tick() {
+ bool DisplayCountdown::update() {
     if ((millis() - last_decrement) >= 1000) {
         last_decrement = millis();
         current_no--;
