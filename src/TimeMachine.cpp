@@ -52,7 +52,6 @@ void TimeMachine::update() {
     else if (this->state == YEAR_TEXT_FLASHING) {
             bool is_done = displayPulsatingText.update();
             if (is_done) {
-                snprintf(yearText, 10, "%d", this->year);
                 this->state = YEAR_NO_FLASHING;
                 this->displayPulsatingText.run(yearText);
             }
