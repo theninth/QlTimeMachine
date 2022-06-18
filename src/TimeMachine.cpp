@@ -50,17 +50,17 @@ void TimeMachine::update() {
         }
     }
     else if (this->state == YEAR_TEXT_FLASHING) {
-            bool is_done = displayPulsatingText.update();
-            if (is_done) {
-                this->state = YEAR_NO_FLASHING;
-                this->displayPulsatingText.run(yearText);
-            }
+        bool is_done = displayPulsatingText.update();
+        if (is_done) {
+            this->state = YEAR_NO_FLASHING;
+            this->displayPulsatingText.run(yearText);
+        }
     }
     else if (this->state == YEAR_NO_FLASHING) {
-            bool is_done = displayPulsatingText.update();
-            if (is_done) {
-                this->state = OFF;
-                this->display->displayClear();
-            }
+        bool is_done = displayPulsatingText.update();
+        if (is_done) {
+            this->state = OFF;
+            this->display->displayClear();
+        }
     }
 }
